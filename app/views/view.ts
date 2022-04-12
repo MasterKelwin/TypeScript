@@ -6,12 +6,12 @@ export abstract class View<T> {
     }
 
     
-    update(model: T): void {
+    public update(model: T): void {
         const template = this.template(model)
         this.elemento.innerHTML = template;
     }
 
-    abstract template(model: T): string // A filha que defini os métodos abstratos
+    protected abstract template(model: T): string // A filha que defini os métodos abstratos
 }
 
 //O template será herdado das filhas NEGOCIACOESVIEW e MENSAGEMVIEW, pois lá eles sobreescrevem de acordo com a necessidade de cada um, utilizando a TIPAGEM GENERIC de cada um. 
