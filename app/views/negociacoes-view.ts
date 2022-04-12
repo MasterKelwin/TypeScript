@@ -5,7 +5,7 @@ export class NegociacoesView {
     private elemento: HTMLElement;
 
     constructor(seletor: string) {
-        this.elemento = document.querySelector(seletor);
+        this.elemento = document.querySelector(seletor); //('#negociacoesView')
     }
 
     template(model: Negociacoes): string {
@@ -22,7 +22,7 @@ export class NegociacoesView {
             ${model.lista().map(negociacao => {
                 return `
                     <tr>
-                        <td>?</td>
+                        <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
                         <td>${negociacao.quantidade}</td>
                         <td>${negociacao.valor}</td>
                     </tr>
