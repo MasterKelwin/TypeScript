@@ -1,13 +1,21 @@
 export abstract class View<T> {
 
     protected elemento: HTMLElement;  //protected é um private, só que as classes filhas de view podem acessar o elemento.
-    constructor(seletor: string) {
+    private escapar = false;
+
+    constructor(seletor: string, escapar?: boolean) { //a "?" antes dos ":" faz o parâmetro ser opcional! Apenas os últimos parâmetros podem ser opcionais. 
         this.elemento = document.querySelector(seletor);
+        if (escapar) {
+            this.escapar = escapar;
+        }
     }
 
     
     public update(model: T): void {
-        const template = this.template(model)
+        let template = this.template(model)
+        if (this.escapar) {
+            template = template.replace(/<script>[\s\S]*?<\/script>/, '');
+        }
         this.elemento.innerHTML = template;
     }
 
