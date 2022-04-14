@@ -1,7 +1,13 @@
 export class View {
     constructor(seletor, escapar) {
         this.escapar = false;
-        this.elemento = document.querySelector(seletor);
+        const elemento = document.querySelector(seletor);
+        if (elemento) {
+            this.elemento = elemento;
+        }
+        else {
+            throw Error(`Seletor ${seletor} não existe no DOM`);
+        }
         if (escapar) {
             this.escapar = escapar;
         }
@@ -14,5 +20,3 @@ export class View {
         this.elemento.innerHTML = template;
     }
 }
-//O template será herdado das filhas NEGOCIACOESVIEW e MENSAGEMVIEW, pois lá eles sobreescrevem de acordo com a necessidade de cada um, utilizando a TIPAGEM GENERIC de cada um. 
-//Já o método update, será importado exatamente igual o do Pai, pois as filhas não declaram update.
