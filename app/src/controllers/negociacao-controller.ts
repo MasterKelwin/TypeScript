@@ -11,7 +11,7 @@ export class NegociacaoController {
     private inputValor: HTMLInputElement;
     private registro: number;
     private negociacoes = new Negociacoes();
-    private negociacoesView = new NegociacoesView('#negociacoesView', true);
+    private negociacoesView = new NegociacoesView('#negociacoesView');
     private mensagemView = new MensagemView('#mensagemView' );
 
     constructor() {
