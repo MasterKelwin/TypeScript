@@ -1,5 +1,7 @@
-export abstract class View<T> {
+import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 
+export abstract class View<T> {
+    
     protected elemento: HTMLElement;  //protected é um private, só que as classes filhas de view podem acessar o elemento.
     private escapar = false;
 
@@ -16,7 +18,7 @@ export abstract class View<T> {
         }
     }
 
-    
+    @logarTempoDeExecucao()
     public update(model: T): void {
         let template = this.template(model)
         if (this.escapar) {
