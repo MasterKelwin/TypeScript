@@ -4,7 +4,7 @@ export class Negociacao {
         private _data: Date, 
         public readonly quantidade: number, 
         public readonly valor: number,
-        private _registro: number) {}
+        public _registro: number) {}
 
     get registro(): number {
         return this._registro++;
