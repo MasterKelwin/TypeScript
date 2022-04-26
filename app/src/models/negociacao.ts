@@ -1,6 +1,6 @@
-import { Imprimivel } from "../utils/imprimivel.js";
+import { Objeto } from "../controllers/interface/objeto.js";
 
-export class Negociacao implements Imprimivel {
+export class Negociacao implements Objeto<Negociacao> {
 
     constructor(
         private _data: Date, 
@@ -33,6 +33,12 @@ export class Negociacao implements Imprimivel {
         Valor: ${this.valor},
         Registro: ${this.registro}
         `
+    }
+
+    public ehIgual(negociacao: Negociacao): boolean {
+        return this.data.getDate() === negociacao.data.getDate()
+            && this.data.getMonth() === negociacao.data.getMonth()
+            && this.data.getFullYear() === negociacao.data.getFullYear()
     }
 
     get volume(): number {
