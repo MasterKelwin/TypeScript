@@ -5,6 +5,13 @@ export class Negociacao {
         this.valor = valor;
         this._registro = _registro;
     }
+    static criaDe(dataString, quantidadeString, valorString, registro) {
+        const exp = /-/g;
+        const data = new Date(dataString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(data, quantidade, valor, registro);
+    }
     get registro() {
         return this._registro++;
     }
@@ -12,14 +19,15 @@ export class Negociacao {
         const data = new Date(this._data.getTime());
         return data;
     }
+    paraTexto() {
+        return `
+        Data: ${this.data},
+        Quantidade: ${this.quantidade},
+        Valor: ${this.valor},
+        Registro: ${this.registro}
+        `;
+    }
     get volume() {
         return this.quantidade * this.valor;
-    }
-    static criaDe(dataString, quantidadeString, valorString, registro) {
-        const exp = /-/g;
-        const data = new Date(dataString.replace(exp, ','));
-        const quantidade = parseInt(quantidadeString);
-        const valor = parseFloat(valorString);
-        return new Negociacao(data, quantidade, valor, registro);
     }
 }

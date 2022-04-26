@@ -1,7 +1,4 @@
-import { inspect } from "../decorators/inspect.js";
-import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
-
-export abstract class View<T> {
+ export abstract class View<T> {
     
     protected elemento: HTMLElement;  //protected é um private, só que as classes filhas de view podem acessar o elemento.
 
